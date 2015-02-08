@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gs-spring-boot">
+    <output-path>$PROJECT_DIR$/out/artifacts/gs_spring_boot</output-path>
+    <root id="archive" name="gs-spring-boot.war" />
+  </artifact>
+</component>
