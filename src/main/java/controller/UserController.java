@@ -27,6 +27,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserById(@PathVariable String id) {
+        log.info("REST call : /user/getById/" + id);
         return userRepository.findOne(id);
     }
 
@@ -34,6 +35,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserByLogin(@PathVariable String login) {
+        log.info("REST call : /user/getByLogin/" + login);
         return userRepository.findOneByLogin(login);
     }
 
@@ -41,6 +43,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserByPassword(@PathVariable String password) {
+        log.info("REST call : /user/getByPassword/" + password);
         return userRepository.findOneByPassword(password);
     }
 
@@ -48,6 +51,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserByLastName(@PathVariable String lastName) {
+        log.info("REST call : /user/getByLastName/" + lastName);
         return userRepository.findOneByLastName(lastName);
     }
 
@@ -55,6 +59,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserByFirstName(@PathVariable String firstName) {
+        log.info("REST call : /user/getByFirstName/" + firstName);
         return userRepository.findOneByFirstName(firstName);
     }
 
@@ -62,6 +67,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserByEmail(@PathVariable String email) {
+        log.info("REST call : /user/getByEmail/" + email);
         return userRepository.findOneByEmail(email);
     }
 
@@ -69,6 +75,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getall() {
+        log.info("REST call : /user/getAll");
         List<User> query = userRepository.findAll();
         return query;
     }
@@ -77,13 +84,11 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserByLoginAndPassword(@PathVariable String login, @PathVariable String password) {
-        log.info("getUserByLoginAndPassword : login=" + login + ";password=" + password);
+        log.info("REST call : /user/getByLoginAndPassword/" + login + "/" + password);
         List<User> users = userRepository.findByLoginAndPassword(login, password);
         if (users != null && users.size() > 0) {
-            log.info("users not null " + users.size());
             return users.get(0);
         }
-        log.info("users=" + users);
         return null;
     }
 
@@ -91,6 +96,7 @@ public class UserController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void post(@RequestBody User user) {
+        log.info("REST call : /user/post");
         userRepository.save(user);
     }
 
@@ -98,6 +104,7 @@ public class UserController {
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable String id) {
+        log.info("REST call : /user/delete/" + id);
         userRepository.delete(id);
     }
 

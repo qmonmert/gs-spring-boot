@@ -28,7 +28,7 @@ public class TweetController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Tweet> getAll() {
-        log.info("Request : /tweet/getAll");
+        log.info("REST call : /tweet/getAll");
         List<Tweet> query = tweetRepository.findAll();
         return query;
     }
@@ -37,7 +37,7 @@ public class TweetController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Tweet> getByUser(@PathVariable User user) {
-        log.info("Request : /tweet/getByUser/{user}");
+        log.info("REST call : /tweet/getByUser/" + user.getId());
         List<Tweet> query = tweetRepository.findByUser(user);
         return query;
     }
@@ -46,6 +46,7 @@ public class TweetController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void post(@RequestBody Tweet tweet, @PathVariable User user) {
+        log.info("REST call : /tweet/post/" + user.getId() + " (tweet=" + tweet.getId() + ")");
         tweet.setUser(user);
         tweet.setDate(new Date());
         tweetRepository.save(tweet);
@@ -55,6 +56,7 @@ public class TweetController {
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable String id) {
+        log.info("REST call : /tweet/delete/" + id);
         tweetRepository.delete(id);
     }
 

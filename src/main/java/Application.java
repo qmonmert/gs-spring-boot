@@ -1,6 +1,3 @@
-import model.Role;
-import model.Tweet;
-import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -14,8 +11,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import repository.TweetRepository;
 import repository.UserRepository;
-
-import java.util.Date;
 
 @Configuration
 @EnableAutoConfiguration
@@ -45,15 +40,14 @@ public class Application {
         InitializingBean initializingBean = new InitializingBean() {
             @Override
             public void afterPropertiesSet() throws Exception {
-                if (true) {
-                    User admin = userRepository.save(new User("admin", "admin", "Monmert", "Quentin", "quentin.monmert@gmail.com", Role.ADMIN.toString()));
-                    User user1 = userRepository.save(new User("user1", "pass1", "Monmert", "Thibaud", "thibaud.monmert@gmail.com", Role.USER.toString()));
-                    userRepository.save(new User("user2", "pass2", "Monmert", "Gautier", "g.monmert@gmail.com", Role.USER.toString()));
-
-                    tweetRepository.save(new Tweet("My first tweet !!!", new Date(), admin));
-                    tweetRepository.save(new Tweet("My second tweet !!!", new Date(), admin));
-                    tweetRepository.save(new Tweet("Hello :=)", new Date(), user1));
-                }
+//                if (true) {
+//                    User admin = userRepository.save(new User("admin", "admin", "Quentin", "Monmert", "quentin.monmert@gmail.com", Role.ADMIN.toString()));
+//                    User user1 = userRepository.save(new User("thib", "thib", "Thibaud", "Monmert", "thibaudmonmert@gmail.com", Role.USER.toString()));
+//                    userRepository.save(new User("gautier", "gautier", "Gautier", "Monmert", "g.monmert@gmail.com", Role.USER.toString()));
+//                    tweetRepository.save(new Tweet("My first tweet !!!", new Date(), admin));
+//                    tweetRepository.save(new Tweet("My second tweet !!!", new Date(), admin));
+//                    tweetRepository.save(new Tweet("Hello :=)", new Date(), user1));
+//                }
             }
         };
         return initializingBean;

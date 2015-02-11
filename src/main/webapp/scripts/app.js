@@ -1,7 +1,6 @@
 'use strict';
 
 // Module
-//var springBootApp = angular.module('springBootApp', ['http-auth-interceptor', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.date', 'ngSanitize', 'anguFixedHeaderTable']);
 var springBootApp = angular.module('springBootApp', ['ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap']);
 
 springBootApp.config(function ($routeProvider) {
@@ -13,11 +12,15 @@ springBootApp.config(function ($routeProvider) {
         })
         .when('/admin', {
             templateUrl: 'views/admin.html',
-            controller: 'SpringBootController'
+            controller: 'AdminController'
         })
         .when('/timeline', {
             templateUrl: 'views/timeline.html',
             controller: 'TimeLineController'
+        })
+        .when('/home', {
+            templateUrl: 'views/home.html',
+            controller: 'HomeController'
         })
         .otherwise({
             redirectTo: '/'
