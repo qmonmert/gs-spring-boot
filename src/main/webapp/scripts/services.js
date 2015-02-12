@@ -2,6 +2,23 @@
 
 /* Services */
 
+/*****************/
+/***** LOGIN *****/
+/*****************/
+angular.module('springBootApp').factory('LoginService', function ($http) {
+    return {
+        getUserByLoginAndPassword: function (login, password) {
+            var promise = $http.get('/user/getByLoginAndPassword/' + login + "/" + password).then(function (response) {
+                return response.data;
+            });
+            return promise;
+        }
+    };
+});
+
+/*****************/
+/***** ADMIN *****/
+/*****************/
 angular.module('springBootApp').factory('AdminService', function ($http) {
     return {
         getUsers: function () {
@@ -19,6 +36,9 @@ angular.module('springBootApp').factory('AdminService', function ($http) {
     };
 });
 
+/********************/
+/***** TIMELINE *****/
+/********************/
 angular.module('springBootApp').factory('TimeLineService', function ($http, $resource) {
     return {
         getAllTweetsByUser: function (userId) {
@@ -26,14 +46,9 @@ angular.module('springBootApp').factory('TimeLineService', function ($http, $res
                 return response.data;
             });
             return promise;
-        }
-    };
-});
-
-angular.module('springBootApp').factory('LoginService', function ($http) {
-    return {
-        getUserByLoginAndPassword: function (login, password) {
-            var promise = $http.get('/user/getByLoginAndPassword/' + login + "/" + password).then(function (response) {
+        },
+        deleteTweet: function (tweetId) {
+            var promise = $http.delete('/tweet/delete/' + tweetId).then(function (response) {
                 return response.data;
             });
             return promise;
@@ -41,6 +56,9 @@ angular.module('springBootApp').factory('LoginService', function ($http) {
     };
 });
 
+/****************/
+/***** HOME *****/
+/****************/
 angular.module('springBootApp').factory('HomeService', function ($http, $resource) {
     return {
         getAllTweets: function () {
@@ -48,7 +66,29 @@ angular.module('springBootApp').factory('HomeService', function ($http, $resourc
                 return response.data;
             });
             return promise;
+        },
+        deleteTweet: function (tweetId) {
+            var promise = $http.delete('/tweet/delete/' + tweetId).then(function (response) {
+                return response.data;
+            });
+            return promise;
         }
     };
 });
 
+/********************/
+/***** LANGUAGE *****/
+/********************/
+angular.module('springBootApp').factory('LanguageService', function ($http, $translate, LANGUAGES) {
+    return {
+        getBy: function(language) {
+            if (language == undefined) {
+                language = 'en';
+            }
+            var promise =  $http.get('i18n/' + language + '.json').then(function(response) {
+                return LANGUAGES;
+            });
+            return promise;
+        }
+    };
+});

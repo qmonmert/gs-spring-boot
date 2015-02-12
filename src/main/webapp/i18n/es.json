@@ -1,0 +1,16 @@
+{
+    "global": {
+      "title": "Twiiiter : Version espanol",
+      "menu": {
+        "home": "Inicio",
+        "me": "Mi",
+        "info": "Info",
+        "logout": "Cerrar la sesión",
+        "admin": "Administración",
+        "language": "Idioma"
+      },
+      "text": {
+        "say": "dicho"
+      }
+    }
+}

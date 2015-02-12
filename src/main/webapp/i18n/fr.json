@@ -1,0 +1,16 @@
+{
+    "global": {
+      "title": "Twiiiter : Version française",
+      "menu": {
+        "home": "Accueil",
+        "me": "Moi",
+        "info": "Info",
+        "logout": "Déconnexion",
+        "admin": "Administration",
+        "language": "Langue"
+      },
+      "text": {
+        "say": "dit"
+      }
+    }
+}

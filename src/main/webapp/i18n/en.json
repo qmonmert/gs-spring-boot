@@ -1,0 +1,16 @@
+{
+    "global": {
+      "title": "Twiiiter : English version",
+      "menu": {
+        "home": "Home",
+        "me": "Me",
+        "info": "Info",
+        "logout": "Logout",
+        "admin": "Administration",
+        "language": "Language"
+      },
+      "text": {
+        "say": "says"
+      }
+    }
+}

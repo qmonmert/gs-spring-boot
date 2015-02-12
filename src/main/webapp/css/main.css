@@ -15,6 +15,13 @@
     background-repeat: no-repeat;
 }
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
+    /* iPhone 5 */
+    .development, .tweetPosted {
+        display: none;
+    }
+}
+
 .blueAppClass {
     color: dodgerblue;
 }

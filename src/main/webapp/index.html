@@ -96,14 +96,34 @@
                     <li ng-show="isConnected">
                         <a href="#timeline">
                             <span class="glyphicon glyphicon-user"></span>
-                            <span translate="global.menu.contact">Me</span>
+                            <span translate="global.menu.me">Me</span>
                         </a>
                     </li>
                     <li>
                         <a data-target="#myModal" role="button" data-toggle="modal" class="cursor">
                             <span class="glyphicon glyphicon-info-sign"></span>
-                            <span translate="global.menu.contact">Info</span>
+                            <span translate="global.menu.info">Info</span>
                         </a>
+                    </li>
+                    <li ng-show="isConnected">
+                        <a href="" ng-click="logout()">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            <span translate="global.menu.logout">Logout</span>
+                        </a>
+                    </li>
+                    <li class="dropdown pointer" ng-controller="LanguageController">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                <span>
+                                    <span class="glyphicon glyphicon-flag"></span>
+                                    <span class="hidden-tablet" translate="global.menu.language">Language</span>
+                                    <b class="caret"></b>
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
+                                <a href="" ng-click="changeLanguage(key)">{{language}}</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -124,6 +144,11 @@
     <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/dist/angular-translate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+
     <!-- Bootstrap -->
     <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
