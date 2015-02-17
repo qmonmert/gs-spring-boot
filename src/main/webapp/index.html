@@ -61,7 +61,7 @@
     </div>
 
     <!-- NAVIGATION BAR -->
-    <div class="development"></div>
+    <div ng-show="{{ENV == 'dev'}}" class="development"></div>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -71,7 +71,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><span translate="global.title" class="blueAppClass">Social network : Monmert family V1.1.0</span></a>
+                <a class="navbar-brand" href="#"><span translate="global.title" style="font-size: 18px;">Twiiiter : English version</span> <span class="navbar-version">v{{VERSION}}</span></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
                 <ul class="nav navbar-nav nav-pills navbar-right">

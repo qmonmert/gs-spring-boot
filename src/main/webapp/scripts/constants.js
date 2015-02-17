@@ -16,3 +16,13 @@ springBootApp.constant('LANGUAGES', {
     'fr': 'French',
     'es': 'Spanish'
 });
+
+springBootApp.constant('ROLES', {
+    'admin': 'ADMIN',
+    'user': 'USER'
+});
+
+springBootApp
+    .constant('ENV', 'prod')
+    .constant('REFRESH_TIME', 5000)
+    .constant('VERSION', '1.1.2');

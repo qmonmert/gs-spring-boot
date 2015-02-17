@@ -33,12 +33,13 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.0.8.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-actuator:1.1.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-actuator:1.1.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-mongodb:1.1.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.12.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.8.RELEASE" />

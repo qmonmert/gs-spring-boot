@@ -62,7 +62,7 @@ angular.module('springBootApp').factory('TimeLineService', function ($http, $res
 angular.module('springBootApp').factory('HomeService', function ($http, $resource) {
     return {
         getAllTweets: function () {
-            var promise = $http.get('/tweet/getAll').then(function (response) {
+            var promise = $http.get('/tweet/getAllOrderByDate').then(function (response) {
                 return response.data;
             });
             return promise;

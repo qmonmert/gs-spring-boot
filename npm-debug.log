@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'angular-translate-loader-static-files' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'angular-translate-loader-static-files', null ]
+5 verbose cache add name=undefined spec="angular-translate-loader-static-files" args=["angular-translate-loader-static-files",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'angular-translate-loader-static-files',
+6 verbose parsed url   path: 'angular-translate-loader-static-files',
+6 verbose parsed url   href: 'angular-translate-loader-static-files' }
+7 silly lockFile e44bf682-ar-translate-loader-static-files angular-translate-loader-static-files
+8 verbose lock angular-translate-loader-static-files /Users/Quentin/.npm/e44bf682-ar-translate-loader-static-files.lock
+9 silly lockFile e44bf682-ar-translate-loader-static-files angular-translate-loader-static-files
+10 silly lockFile e44bf682-ar-translate-loader-static-files angular-translate-loader-static-files
+11 verbose addNamed [ 'angular-translate-loader-static-files', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 18deef36-ar-translate-loader-static-files angular-translate-loader-static-files@
+14 verbose lock angular-translate-loader-static-files@ /Users/Quentin/.npm/18deef36-ar-translate-loader-static-files.lock
+15 silly addNameRange { name: 'angular-translate-loader-static-files',
+15 silly addNameRange   range: '*',
+15 silly addNameRange   hasData: false }
+16 verbose request where is /angular-translate-loader-static-files
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 804aaf309ae868c4
+19 verbose url raw /angular-translate-loader-static-files
+20 verbose url resolving [ 'https://registry.npmjs.org/',
+20 verbose url resolving   './angular-translate-loader-static-files' ]
+21 verbose url resolved https://registry.npmjs.org/angular-translate-loader-static-files
+22 verbose request where is https://registry.npmjs.org/angular-translate-loader-static-files
+23 info trying registry request attempt 1 at 12:46:47
+24 http GET https://registry.npmjs.org/angular-translate-loader-static-files
+25 http 404 https://registry.npmjs.org/angular-translate-loader-static-files
+26 verbose headers { date: 'Thu, 12 Feb 2015 11:46:47 GMT',
+26 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 verbose headers   'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '52',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   'x-served-by': 'cache-lhr6330-LHR',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1423741607.390873,VS0,VE387',
+26 verbose headers   'keep-alive': 'timeout=10, max=50',
+26 verbose headers   connection: 'Keep-Alive' }
+27 silly registry.get cb [ 404,
+27 silly registry.get   { date: 'Thu, 12 Feb 2015 11:46:47 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '52',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     'x-served-by': 'cache-lhr6330-LHR',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1423741607.390873,VS0,VE387',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly lockFile 18deef36-ar-translate-loader-static-files angular-translate-loader-static-files@
+29 silly lockFile 18deef36-ar-translate-loader-static-files angular-translate-loader-static-files@
+30 error 404 404 Not Found: angular-translate-loader-static-files
+30 error 404
+30 error 404 'angular-translate-loader-static-files' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Darwin 14.1.0
+32 error command "node" "/usr/local/bin/npm" "install" "angular-translate-loader-static-files"
+33 error cwd /Users/Quentin/Documents/Perso/vrac/ippon/spring-boot-project
+34 error node -v v0.10.33
+35 error npm -v 1.4.28
+36 error code E404
+37 verbose exit [ 1, true ]

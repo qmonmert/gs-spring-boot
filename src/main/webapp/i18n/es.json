@@ -10,7 +10,9 @@
         "language": "Idioma"
       },
       "text": {
-        "say": "dicho"
+        "say": "dicho",
+        "see": "Vista",
+        "newTweets": "nuevo Tweets"
       }
     }
 }

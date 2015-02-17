@@ -30,6 +30,17 @@
     <alert class="alert-success" ng-repeat="message in messages" type="message.type" close="closeAlert($index)">
         {{message.msg}}
     </alert>
+
+    <div class="panel panel-danger linkClass" id="notificationNewTweets" style="display: none;" ng-click="seeNewTweets()">
+        <div class="panel-heading">
+            <h3 class="panel-title" align="center">
+                <span translate="global.text.see">See</span>
+                {{ nbNewTweets }}
+                <span translate="global.text.newTweets">new Tweets</span>
+            </h3>
+        </div>
+    </div>
+
     <ul class="ulTimeline" ng-repeat="tweet in tweets | orderBy:'date':true">
         <li>
             <div class="panel panel-info">

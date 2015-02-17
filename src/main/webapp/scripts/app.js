@@ -3,6 +3,27 @@
 // Module
 var springBootApp = angular.module('springBootApp', ['ngResource', 'ngRoute', 'ngSanitize', 'ui.bootstrap', 'ngCookies', 'pascalprecht.translate']);
 
+
+springBootApp.run(function ($rootScope, $http, $location, ENV, REFRESH_TIME, VERSION) {
+    $rootScope.ENV = ENV;
+    $rootScope.REFRESH_TIME = REFRESH_TIME;
+    $rootScope.VERSION = VERSION;
+
+    // Alert messages
+    $rootScope.messages = [];
+
+    // Remove an alert message
+    $rootScope.closeAlert = function(index) {
+        $rootScope.messages.splice(index, 1);
+    };
+
+    // Logout
+    $rootScope.logout = function() {
+        $location.path("/");
+    }
+
+});
+
 springBootApp.config(function ($routeProvider, $translateProvider) {
 
     $routeProvider

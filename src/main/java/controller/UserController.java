@@ -3,13 +3,16 @@ package controller;
 import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import repository.UserRepository;
 
 import javax.inject.Inject;
 import java.util.List;
+
+//import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by Quentin on 05/02/15.
@@ -74,6 +77,7 @@ public class UserController {
     @RequestMapping(value = "/getAll",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
+    @Cacheable("users")
     public List<User> getall() {
         log.info("REST call : /user/getAll");
         List<User> query = userRepository.findAll();
@@ -95,6 +99,7 @@ public class UserController {
     @RequestMapping(value = "/post",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
+    @CacheEvict(value="users", allEntries = true)
     public void post(@RequestBody User user) {
         log.info("REST call : /user/post");
         userRepository.save(user);

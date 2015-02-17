@@ -47,3 +47,14 @@
     font-weight: bold;
 }
 
+.linkClass {
+    cursor: pointer;
+}
+
+/* ==========================================================================
+Version number in navbar
+========================================================================== */
+.navbar-version {
+    font-size: 10px;
+    color: #ccc
+}

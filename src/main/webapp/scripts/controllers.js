@@ -2,6 +2,41 @@
 
 /* Controllers */
 
+springBootApp.controller('LoginController', function($scope, $rootScope, $location, $cookieStore, LoginService, ROLES, ENV) {
+
+    // Logout the user
+    $rootScope.isConnected = false;
+    $rootScope.isAdmin = false;
+    $cookieStore.put("user", null);
+    $cookieStore.put("isConnected", false);
+    $cookieStore.put("isAdmin", false);
+
+    // Function to log in the application (by login/password)
+    $scope.login = function() {
+        var login = $scope.user.login;
+        var password = $scope.user.password;
+        getUserByLoginAndPassword(login, password);
+    };
+
+    // Call a service to check the login/password
+    var getUserByLoginAndPassword = function(login, password) {
+        LoginService.getUserByLoginAndPassword(login, password).then(function(promise) {
+            if (promise != '') {
+                var userLogged = promise;
+                $cookieStore.put("isAdmin", (userLogged.role == ROLES.admin));
+                $cookieStore.put("isConnected", true);
+                $cookieStore.put("user", userLogged);
+                $rootScope.isConnected = true;
+                $rootScope.isAdmin = (userLogged.role == ROLES.admin);
+                $location.path("/home");
+            } else {
+                $rootScope.messages.push({type: 'success', msg: 'Authentication failed'});
+            }
+        });
+    }
+
+});
+
 springBootApp.controller('AdminController', function($scope, $rootScope, $resource, $location, $cookieStore, AdminService, ROLES) {
 
     // Current user
@@ -62,54 +97,6 @@ springBootApp.controller('AdminController', function($scope, $rootScope, $resour
 
 });
 
-springBootApp.controller('LoginController', function($scope, $rootScope, $location, $cookieStore, LoginService, ROLES) {
-
-    // Logout the user
-    $rootScope.isConnected = false;
-    $rootScope.isAdmin = false;
-    $cookieStore.put("user", null);
-    $cookieStore.put("isConnected", false);
-    $cookieStore.put("isAdmin", false);
-
-    // Alert messages
-    $scope.messages = [];
-
-    // Function to log in the application (by login/password)
-    $scope.login = function() {
-        var login = $scope.user.login;
-        var password = $scope.user.password;
-        getUserByLoginAndPassword(login, password);
-    };
-
-    // Call a service to check the login/password
-    var getUserByLoginAndPassword = function(login, password) {
-        LoginService.getUserByLoginAndPassword(login, password).then(function(promise) {
-            if (promise != '') {
-                var userLogged = promise;
-                $cookieStore.put("isAdmin", (userLogged.role == ROLES.admin));
-                $cookieStore.put("isConnected", true);
-                $cookieStore.put("user", userLogged);
-                $rootScope.isConnected = true;
-                $rootScope.isAdmin = (userLogged.role == ROLES.admin);
-                $location.path("/home");
-            } else {
-                $scope.messages.push({type: 'success', msg: 'Authentication failed'});
-            }
-        });
-    }
-
-    // Logout
-    $rootScope.logout = function() {
-        $location.path("/");
-    }
-
-    // Remove an alert message
-    $scope.closeAlert = function(index) {
-        $scope.messages.splice(index, 1);
-    };
-
-});
-
 springBootApp.controller('TimeLineController', function($scope, $rootScope, $resource, $cookieStore, TimeLineService) {
 
     // Current user
@@ -120,9 +107,6 @@ springBootApp.controller('TimeLineController', function($scope, $rootScope, $res
     if (user == null || $rootScope.isAdmin == null || $rootScope.isConnected == null) {
         $location.path("/");
     }
-
-    // Alert messages
-    $scope.messages = [];
 
     var getAllTweetsByUser = function() {
         TimeLineService.getAllTweetsByUser(user.id).then(function (promise) {
@@ -139,7 +123,7 @@ springBootApp.controller('TimeLineController', function($scope, $rootScope, $res
         resourceCreateTweet.save($scope.tweet, function () {
             getAllTweetsByUser();
             $scope.tweet = new Object();
-            $scope.messages.push({type: 'success', msg: 'Message sent !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'Message sent !!!'});
         });
     };
 
@@ -148,25 +132,13 @@ springBootApp.controller('TimeLineController', function($scope, $rootScope, $res
         TimeLineService.deleteTweet(tweetId).then(function (promise) {
             getAllTweetsByUser();
             $scope.tweet = new Object();
-            $scope.messages.push({type: 'success', msg: 'Tweet deleted !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'Tweet deleted !!!'});
         });
     };
 
-    // Remove an alert message
-    //$scope.closeAlert = function(index) {
-    //    $scope.messages.splice(index, 1);
-    //};
-
-    //var res = $http.get('/tweet/getByUser/'+ $rootScope.user.id);
-    //res.success(function(data, status, headers, config) {
-    //    debugger;
-    //});
-    //res.error(function(data, status, headers, config) {
-    //    debugger;
-    //});
 });
 
-springBootApp.controller('HomeController', function($scope, $rootScope, $resource, $cookieStore, HomeService) {
+springBootApp.controller('HomeController', function($scope, $rootScope, $resource, $cookieStore, $timeout, $interval, HomeService) {
 
     // Current user
     var user = $cookieStore.get('user');
@@ -177,16 +149,37 @@ springBootApp.controller('HomeController', function($scope, $rootScope, $resourc
         $location.path("/");
     }
 
-    // Alert messages
-    $scope.messages = [];
+    // Nb tweets
+    $scope.nbTweetsDisplay = 0;
+    $scope.nbTweetsReal = 0;
+    $scope.nbNewTweets = 0;
+    $scope.lastTweetIdDisplay = '';
+    $scope.lastTweetIdReal = '';
 
     var getAllTweets = function() {
         HomeService.getAllTweets().then(function(promise) {
             $scope.tweets = promise;
             $('#nbTweets').html($scope.tweets.length);
+            $('#notificationNewTweets').css('display', 'none');
+            $scope.nbTweetsDisplay = $scope.tweets.length;
+            $scope.lastTweetIdDisplay = promise[0].id;
         });
-    }
+    };
     getAllTweets();
+
+    // Get all the tweets to check if there is new tweets
+    var checkTweets = function() {
+        HomeService.getAllTweets().then(function(promise) {
+            $scope.nbTweetsReal = promise.length;
+            $scope.lastTweetIdReal = promise[0].id;
+            $scope.nbNewTweets = $scope.nbTweetsReal - $scope.nbTweetsDisplay;
+            if ($scope.lastTweetIdReal != $scope.lastTweetIdDisplay && $scope.nbNewTweets > 0) {
+                $('#notificationNewTweets').css('display', 'block');
+            } else {
+                $('#notificationNewTweets').css('display', 'none');
+            }
+        });
+    };
 
     // Create a tweet
     $scope.tweet = new Object();
@@ -195,7 +188,8 @@ springBootApp.controller('HomeController', function($scope, $rootScope, $resourc
         resourceCreateTweet.save($scope.tweet, function () {
             getAllTweets();
             $scope.tweet = new Object();
-            $scope.messages.push({type: 'success', msg: 'Message sent !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'Message sent !!!'});
+            closeAlertTimeout();
         });
     };
 
@@ -204,13 +198,24 @@ springBootApp.controller('HomeController', function($scope, $rootScope, $resourc
         HomeService.deleteTweet(tweetId).then(function (promise) {
             getAllTweets();
             $scope.tweet = new Object();
-            $scope.messages.push({type: 'success', msg: 'Tweet deleted !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'Tweet deleted !!!'});
+            closeAlertTimeout();
         });
     };
 
-    // Remove an alert message
-    $scope.closeAlert = function(index) {
-        $scope.messages.splice(index, 1);
+    // Remove an alert message with timeout
+    var closeAlertTimeout = function() {
+        $timeout(function() {
+            $rootScope.closeAlert();
+        }, 4000);
+    };
+
+    // Check the new tweets
+    $interval(checkTweets, $rootScope.REFRESH_TIME);
+
+    // Click on the new tweets
+    $scope.seeNewTweets = function() {
+        getAllTweets();
     };
 
 });

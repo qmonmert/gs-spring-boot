@@ -10,7 +10,9 @@
         "language": "Langue"
       },
       "text": {
-        "say": "dit"
+        "say": "dit",
+        "see": "Voir",
+        "newTweets": "nouveaux Tweets"
       }
     }
 }
