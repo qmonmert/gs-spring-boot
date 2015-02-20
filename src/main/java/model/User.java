@@ -40,10 +40,14 @@ public class User implements Serializable {
     @Size(min = 0, max = 100)
     private String role;
 
+    @Size(min = 0, max = 100)
+    @Field("photo")
+    private String photo;
+
     public User() {
     }
 
-    public User(String id, String login, String password, String firstName, String lastName, String email, String role) {
+    public User(String id, String login, String password, String firstName, String lastName, String email, String role, String photo) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -51,15 +55,17 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.email = email;
         this.role = role;
+        this.photo = photo;
     }
 
-    public User(String login, String password, String firstName, String lastName, String email, String role) {
+    public User(String login, String password, String firstName, String lastName, String email, String role, String photo) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.role = role;
+        this.photo = photo;
     }
 
     public String getId() {
@@ -116,6 +122,14 @@ public class User implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override

@@ -123,7 +123,7 @@ springBootApp.controller('TimeLineController', function($scope, $rootScope, $res
         resourceCreateTweet.save($scope.tweet, function () {
             getAllTweetsByUser();
             $scope.tweet = new Object();
-            $rootScope.messages.push({type: 'success', msg: 'Message sent !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'global.tweet.send'});
         });
     };
 
@@ -132,7 +132,7 @@ springBootApp.controller('TimeLineController', function($scope, $rootScope, $res
         TimeLineService.deleteTweet(tweetId).then(function (promise) {
             getAllTweetsByUser();
             $scope.tweet = new Object();
-            $rootScope.messages.push({type: 'success', msg: 'Tweet deleted !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'global.tweet.delete'});
         });
     };
 
@@ -188,7 +188,7 @@ springBootApp.controller('HomeController', function($scope, $rootScope, $resourc
         resourceCreateTweet.save($scope.tweet, function () {
             getAllTweets();
             $scope.tweet = new Object();
-            $rootScope.messages.push({type: 'success', msg: 'Message sent !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'global.tweet.send'});
             closeAlertTimeout();
         });
     };
@@ -198,7 +198,7 @@ springBootApp.controller('HomeController', function($scope, $rootScope, $resourc
         HomeService.deleteTweet(tweetId).then(function (promise) {
             getAllTweets();
             $scope.tweet = new Object();
-            $rootScope.messages.push({type: 'success', msg: 'Tweet deleted !!!'});
+            $rootScope.messages.push({type: 'success', msg: 'global.tweet.delete'});
             closeAlertTimeout();
         });
     };

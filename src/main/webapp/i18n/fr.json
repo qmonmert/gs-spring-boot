@@ -9,10 +9,17 @@
         "admin": "Administration",
         "language": "Langue"
       },
+      "hello": "Bienvenue",
+      "log": "Se connecter",
+      "test": "Connectez vous avec le compte : user/user",
       "text": {
         "say": "dit",
         "see": "Voir",
         "newTweets": "nouveaux Tweets"
+      },
+      "tweet": {
+        "send": "Tweet envoyé",
+        "delete": "Tweet supprimé"
       }
     }
 }

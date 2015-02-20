@@ -4,6 +4,9 @@ server:
 spring:
     data:
         mongodb:
+            #host: 127.9.106.2
             host: localhost
             port: 27017
-            database: springbootdatabase
+            database: mytwiiiter
+            #username: admin
+            #password: dxKZq1EG1AeK

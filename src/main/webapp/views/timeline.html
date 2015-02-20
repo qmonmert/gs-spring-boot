@@ -28,7 +28,7 @@
 <div class="container">
     <!-- ALERT -->
     <alert class="alert-success" ng-repeat="message in messages" type="message.type" close="closeAlert($index)">
-        {{message.msg}}
+        <span translate="{{message.msg}}"></span>
     </alert>
     <ul class="ulTimeline" ng-repeat="tweet in tweets | orderBy:'date':true">
         <li>

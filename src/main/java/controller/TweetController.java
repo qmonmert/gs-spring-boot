@@ -70,6 +70,7 @@ public class TweetController {
     @RequestMapping(value = "/delete/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
+    @CacheEvict(value="tweets", allEntries = true)
     public void delete(@PathVariable String id) {
         log.info("REST call : /tweet/delete/" + id);
         tweetRepository.delete(id);

@@ -7,10 +7,6 @@ springBootApp.constant('ROLES', {
     'user': 'USER'
 });
 
-/*
- Languages codes are ISO_639-1 codes, see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
- They are written in English to avoid character encoding issues (not a perfect solution)
- */
 springBootApp.constant('LANGUAGES', {
     'en': 'English',
     'fr': 'French',
@@ -24,5 +20,5 @@ springBootApp.constant('ROLES', {
 
 springBootApp
     .constant('ENV', 'prod')
-    .constant('REFRESH_TIME', 5000)
-    .constant('VERSION', '1.1.2');
+    .constant('REFRESH_TIME', 9000)
+    .constant('VERSION', '1.1.4');
